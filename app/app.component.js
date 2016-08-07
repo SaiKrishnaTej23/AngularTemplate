@@ -10,17 +10,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
+var app_service_1 = require('./app.service');
 var AppComponent = (function () {
-    function AppComponent() {
+    function AppComponent(_appservice, router) {
+        this._appservice = _appservice;
+        this.router = router;
+        this.result = this._appservice.AuthorizeUser();
+        console.log(this.result);
+        this.CheckAuth();
     }
+    AppComponent.prototype.CheckAuth = function () {
+        console.log(this.result.IsAuthentic);
+        if (this.result.IsAuthentic == true) {
+            console.log("hi");
+            this.router.navigateByUrl('/about');
+        }
+        else {
+            this.router.navigateByUrl('');
+        }
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
             templateUrl: 'app/app.component.html',
             styleUrls: ['app/app.component.css'],
-            directives: [router_1.ROUTER_DIRECTIVES]
+            directives: [router_1.ROUTER_DIRECTIVES],
+            providers: [app_service_1.AppService]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [app_service_1.AppService, router_1.Router])
     ], AppComponent);
     return AppComponent;
 }());

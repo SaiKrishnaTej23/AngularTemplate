@@ -9,14 +9,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
+var AuthModel_1 = require('./AuthModel');
+//import { Http , Response } from '@angular/http';
 var AppService = (function () {
-    function AppService(htt) {
-        this.htt = htt;
+    ////Authorize: AuthModel = new AuthModel();
+    function AppService() {
     }
+    AppService.prototype.AuthorizeUser = function () {
+        return new AuthModel_1.AuthModel(true, "Avarakadabra");
+        // return this._http.get("../data.json")
+        //     .map((res: Response) => {
+        //           console.log(res.json());
+        //         return res.json();                      
+        //     })
+    };
+    AppService.prototype.errorFunction = function () {
+        console.log("Something Terribly went wrong");
+    };
     AppService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [])
     ], AppService);
     return AppService;
 }());
