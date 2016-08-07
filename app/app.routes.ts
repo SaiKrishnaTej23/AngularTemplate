@@ -5,8 +5,8 @@ import { AppAboutComponent } from './about.component'
 import { AppHomeComponent } from './home.component';
 
 export const routes: RouterConfig = [
-  { path: '', component: AppHomeComponent,as :'Home' },
-  { path: 'about', component: AppAboutComponent, as: 'About'    }
+  { path: '', component: AppHomeComponent},
+  { path: 'about', component: AppAboutComponent }
 ];
 
 export const APP_ROUTER_PROVIDERS = [
